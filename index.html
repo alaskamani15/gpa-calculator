@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+</head>
+
+<body>
+
+<h1>
+GPA Calculator
+</h1>
+<pre>Sample input: AP.72;AP.80;H.95;R.89</pre>
+Input: <input id="input"/>
+<button id="submit">
+Submit
+</button>
+<pre id="result">Results not available. Click Submit.</pre>
+
+</body>
+
+<footer>
+<script>
+document.getElementById("submit").addEventListener("click", submit);
+
+function submit(){
+	var input = document.getElementById("input").value;
+  var courses = input.split(";");
+  console.log(courses);
+  var totalGPA = 0; //added all up
+  
+  for (var i = 0; i < courses.length; i++) {
+  	var selectedCourse = courses[i].split(".");
+    var type = selectedCourse[0];
+    var grade = selectedCourse[1];
+    var courseGPA = determineGPA(type, grade);
+    totalGPA += courseGPA;
+  }
+  
+  result(totalGPA/courses.length);
+}
+
+function result(text) {
+	document.getElementById("result").innerHTML = "Average GPA is " + text;
+}
+
+function determineGPA(type, grade) {
+	switch (type) {
+  	case "AP":
+    	if (grade >= 97) {
+      	return 5.0;
+      } else if (93 <= grade && grade <= 96) {
+      	return 4.8;
+      } else if (90 <= grade && grade  <= 92) {
+      	return 4.6;
+      } else if (87 <= grade && grade  <= 89) {
+      	return 4.4;
+      } else if (83 <= grade && grade <= 86) {
+      	return 4.2;
+      } else if (80 <= grade && grade <= 82) {
+      	return 4.0;
+      } else if (77 <= grade && grade <= 79) {
+      	return 3.8;
+      } else if (73 <= grade && grade <= 76) {
+      	return 3.6;
+      } else if (71 <= grade && grade <= 72) {
+      	return 3.4;
+      } else if (grade == 70) {
+      	return 3.0;
+      } else {
+      	return 0;
+      }
+    	break;
+      
+      case "IB":
+      if (grade >= 97) {
+      	return 5.0;
+      } else if (93 <= grade && grade <= 96) {
+      	return 4.8;
+      } else if (90 <= grade && grade  <= 92) {
+      	return 4.6;
+      } else if (87 <= grade && grade  <= 89) {
+      	return 4.4;
+      } else if (83 <= grade && grade <= 86) {
+      	return 4.2;
+      } else if (80 <= grade && grade <= 82) {
+      	return 4.0;
+      } else if (77 <= grade && grade <= 79) {
+      	return 3.8;
+      } else if (73 <= grade && grade <= 76) {
+      	return 3.6;
+      } else if (71 <= grade && grade <= 72) {
+      	return 3.4;
+      } else if (grade == 70) {
+      	return 3.0;
+      } else {
+      	return 0;
+      }
+      break;
+      
+      case "H":
+      if (grade >= 97) {
+      	return 4.5;
+      } else if (93 <= grade && grade <= 96) {
+      	return 4.3;
+      } else if (90 <= grade && grade  <= 92) {
+      	return 4.1;
+      } else if (87 <= grade && grade  <= 89) {
+      	return 3.9;
+      } else if (83 <= grade && grade <= 86) {
+      	return 3.7;
+      } else if (80 <= grade && grade <= 82) {
+      	return 3.5;
+      } else if (77 <= grade && grade <= 79) {
+      	return 3.3;
+      } else if (73 <= grade && grade <= 76) {
+      	return 3.1;
+      } else if (71 <= grade && grade <= 72) {
+      	return 2.9;
+      } else if (grade == 70) {
+      	return 2.5;
+      } else {
+      	return 0;
+      }
+      break;
+      
+      case "R":
+      if (grade >= 97) {
+      	return 4.0;
+      } else if (93 <= grade && grade <= 96) {
+      	return 3.8;
+      } else if (90 <= grade && grade  <= 92) {
+      	return 3.6;
+      } else if (87 <= grade && grade  <= 89) {
+      	return 3.4;
+      } else if (83 <= grade && grade <= 86) {
+      	return 3.2;
+      } else if (80 <= grade && grade <= 82) {
+      	return 3.0;
+      } else if (77 <= grade && grade <= 79) {
+      	return 2.8;
+      } else if (73 <= grade && grade <= 76) {
+      	return 2.6;
+      } else if (71 <= grade && grade <= 72) {
+      	return 2.4;
+      } else if (grade == 70) {
+      	return 2.0;
+      } else {
+      	return 0;
+      }
+      break;
+      
+      default:
+      return 0;
+      break;
+  }
+}
+</script>
+</footer>
+
+</html>
